@@ -1,4 +1,6 @@
-
+def obtener_representacion_byte(caracter):
+  representacion_byte = ' '.join(format(b, '08b') for b in caracter.encode())
+  return representacion_byte
 
 def main():
   while True:
@@ -10,11 +12,15 @@ def main():
       opcion = input("Ingrese su opción (0-2): ")
 
       if opcion == '1':
-         obtener_representacion_byte(caracter)
+          caracter = input("Ingrese un carácter: ")
+          resultado = obtener_representacion_byte(caracter)
+          print(f"Representación en byte de '{caracter}': {resultado}")
       elif opcion == '2':
-         palabraAbyte(caracter)
+          palabra = input("Ingrese una palabra: ")
+          resultado = ' '.join(obtener_representacion_byte(c) for c in palabra)
+          print(f"Representación en byte de '{palabra}': {resultado}")
       elif opcion == '0':
-          print("Salir del programa")
+          print("Saliendo del programa")
           break
       else:
           print("Opción no válida. Ingrese un número del 0 al 2.")
